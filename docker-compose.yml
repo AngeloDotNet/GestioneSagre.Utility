@@ -7,8 +7,8 @@ services:
     build:
       context: .
       dockerfile: src/GestioneSagre.Utility/Dockerfile
-    ports:
-      - 8051:5001
+    #ports:
+    #  - 8051:5001
     networks:
       - lan-network
 
