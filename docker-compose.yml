@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  gestionesagre-utility:
-    container_name: utility
+  utility:
+    container_name: api-utility
     restart: always
     build:
       context: .
