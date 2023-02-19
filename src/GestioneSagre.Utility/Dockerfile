@@ -2,7 +2,7 @@
 WORKDIR /webapp
 
 FROM base as deps
-COPY src/GestioneSagre.Utility/*.csproj .
+COPY . .
 RUN dotnet restore
 
 FROM deps as build
