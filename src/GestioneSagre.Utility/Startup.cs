@@ -39,7 +39,7 @@ public class Startup
     {
         IWebHostEnvironment env = app.Environment;
 
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
         app.UseCors("GestioneSagre.Utility");
 
         app.UseSwagger();
