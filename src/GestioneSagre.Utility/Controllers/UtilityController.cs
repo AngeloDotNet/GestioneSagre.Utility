@@ -1,7 +1,4 @@
-﻿using GestioneSagre.Utility.Controllers.Common;
-using Microsoft.AspNetCore.Mvc;
-
-namespace GestioneSagre.Utility.Controllers;
+﻿namespace GestioneSagre.Utility.Controllers;
 
 public class UtilityController : BaseController
 {

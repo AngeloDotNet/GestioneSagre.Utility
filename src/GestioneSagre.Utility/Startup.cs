@@ -1,6 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
-
-namespace GestioneSagre.Utility;
+﻿namespace GestioneSagre.Utility;
 
 public class Startup
 {
