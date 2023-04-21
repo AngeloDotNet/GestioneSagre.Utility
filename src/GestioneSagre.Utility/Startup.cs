@@ -17,34 +17,34 @@ public class Startup
             options.AddPolicy("GestioneSagre.Utility", policy =>
             {
                 policy.AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod();
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
             });
         });
 
-        services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen(config =>
-        {
-            config.SwaggerDoc("v1", new OpenApiInfo
-            {
-                Title = "Gestione Sagre Utility",
-                Version = "v1"
-            });
-        });
+        var connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
+
+        services.AddSwaggerGenConfig("Gestione Sagre Utility", "v1", string.Empty);
+
+        //Creazione migration: Add-Migration InitialMigration
+        //Esecuzione migration: Update-Database
+        services.AddDbContextUseSQLServer<UtilityDbContext>(connectionString, 3);
+        services.AddDbContextGenericsMethods<UtilityDbContext>();
+
+        services
+            .AddTransient<IScontrinoPagatoService, ScontrinoPagatoService>()
+            .AddTransient<IScontrinoStatoService, ScontrinoStatoService>()
+            .AddTransient<ITipoClienteService, TipoClienteService>()
+            .AddTransient<ITipoPagamentoService, TipoPagamentoService>()
+            .AddTransient<ITipoScontrinoService, TipoScontrinoService>();
     }
 
     public void Configure(WebApplication app)
     {
         IWebHostEnvironment env = app.Environment;
 
-        //app.UseHttpsRedirection();
         app.UseCors("GestioneSagre.Utility");
-
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Gestione Sagre Utility v1");
-        });
+        app.AddUseSwaggerUI("Gestione Sagre Utility v1");
 
         app.UseRouting();
         app.UseEndpoints(endpoints =>

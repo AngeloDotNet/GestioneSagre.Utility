@@ -1,4 +1,14 @@
 ﻿global using System.Net.Mime;
+global using GestioneSagre.Shared.Entities.Utility;
 global using GestioneSagre.Utility.Controllers.Common;
+global using GestioneSagre.Utility.Core.Interfaces;
+global using GestioneSagre.Utility.Core.Services;
+global using GestioneSagre.Utility.Infrastructure.EFCore;
+global using GestioneSagre.Utility.Infrastructure.EFCore.EntityConfiguration;
 global using Microsoft.AspNetCore.Mvc;
-global using Microsoft.OpenApi.Models;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using NET6CustomLibrary.EFCore.Infrastructure.Interfaces;
+global using NET6CustomLibrary.Extensions;
+global using NET6CustomLibrary.Swagger;
+global using SequentialGuid;
