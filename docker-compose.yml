@@ -1,16 +1,7 @@
 version: '3.7'
 
 services:
-  utility:
+  api-utility:
     container_name: api-utility
     restart: always
-    build:
-      context: .
-      dockerfile: src/GestioneSagre.Utility/Dockerfile
-    networks:
-      - lan-network
-
-networks:
-  lan-network:
-    external:
-      name: docker-net
+    build: ./src/GestioneSagre.Utility/Dockerfile
