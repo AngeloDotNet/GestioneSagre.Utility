@@ -2,60 +2,67 @@
 
 public class UtilityController : BaseController
 {
-    private readonly ILogger<UtilityController> _logger;
+    private readonly ILogger<UtilityController> logger;
+    private readonly ITipoClienteService tipoClienteService;
+    private readonly ITipoPagamentoService tipoPagamentoService;
+    private readonly ITipoScontrinoService tipoScontrinoService;
+    private readonly IScontrinoPagatoService scontrinoPagatoService;
+    private readonly IScontrinoStatoService scontrinoStatoService;
 
-    public UtilityController(ILogger<UtilityController> logger)
+    public UtilityController(ILogger<UtilityController> logger, ITipoClienteService tipoClienteService,
+        ITipoPagamentoService tipoPagamentoService, ITipoScontrinoService tipoScontrinoService,
+        IScontrinoPagatoService scontrinoPagatoService, IScontrinoStatoService scontrinoStatoService)
     {
-        _logger = logger;
+        this.logger = logger;
+        this.tipoClienteService = tipoClienteService;
+        this.tipoPagamentoService = tipoPagamentoService;
+        this.tipoScontrinoService = tipoScontrinoService;
+        this.scontrinoPagatoService = scontrinoPagatoService;
+        this.scontrinoStatoService = scontrinoStatoService;
     }
 
-    [HttpGet("GetTipoCliente")]
-    public async Task<List<string>> GetTipoCliente()
+    [HttpGet("TipoCliente")]
+    public async Task<List<TipoCliente>> GetTipoClienteAsync()
     {
-        _logger.LogInformation("GetTipoCliente");
+        logger.LogInformation("GetTipoCliente");
 
-        var result = await Task.FromResult(new List<string> { "Cliente", "Staff" });
-
+        var result = await tipoClienteService.GetListTipoClienteAsync();
         return result;
     }
 
-    [HttpGet("GetTipoScontrino")]
-    public async Task<List<string>> GetTipoScontrino()
+    [HttpGet("TipoPagamento")]
+    public async Task<List<TipoPagamento>> GetTipoPagamentoAsync()
     {
-        _logger.LogInformation("GetTipoScontrino");
+        logger.LogInformation("GetTipoPagamento");
 
-        var result = await Task.FromResult(new List<string> { "Pagamento", "Omaggio" });
-
+        var result = await tipoPagamentoService.GetListTipoPagamentoAsync();
         return result;
     }
 
-    [HttpGet("GetTipoPagamento")]
-    public async Task<List<string>> GetTipoPagamento()
+    [HttpGet("TipoScontrino")]
+    public async Task<List<TipoScontrino>> GetTipoScontrinoAsync()
     {
-        _logger.LogInformation("GetTipoPagamento");
+        logger.LogInformation("GetTipoScontrino");
 
-        var result = await Task.FromResult(new List<string> { "Contanti", "Carta di credito", "Carta di debito" });
-
+        var result = await tipoScontrinoService.GetListTipoScontrinoAsync();
         return result;
     }
 
-    [HttpGet("GetScontrinoPagato")]
-    public async Task<List<string>> GetScontrinoPagato()
+    [HttpGet("ScontrinoPagato")]
+    public async Task<List<ScontrinoPagato>> GetScontrinoPagatoAsync()
     {
-        _logger.LogInformation("GetScontrinoPagato");
+        logger.LogInformation("GetScontrinoPagato");
 
-        var result = await Task.FromResult(new List<string> { "Pagato", "Non pagato" });
-
+        var result = await scontrinoPagatoService.GetListScontrinoPagatoAsync();
         return result;
     }
 
-    [HttpGet("GetScontrinoStato")]
-    public async Task<List<string>> GetScontrinoStato()
+    [HttpGet("ScontrinoStato")]
+    public async Task<List<ScontrinoStato>> GetScontrinoStatoAsync()
     {
-        _logger.LogInformation("GetScontrinoStato");
+        logger.LogInformation("GetScontrinoStato");
 
-        var result = await Task.FromResult(new List<string> { "Aperto", "In elaborazione", "Da incassare", "Chiuso", "Annullato" });
-
+        var result = await scontrinoStatoService.GetListScontrinoStatoAsync();
         return result;
     }
 }
