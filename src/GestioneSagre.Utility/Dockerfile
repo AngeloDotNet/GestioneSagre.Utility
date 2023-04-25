@@ -1,4 +1,11 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
+﻿﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get -y install tzdata
+RUN ln -fs /usr/share/zoneinfo/Europe/Rome /etc/localtime 
+RUN dpkg-reconfigure --frontend noninteractive tzdata
+
 WORKDIR /webapp
 
 FROM base as deps
