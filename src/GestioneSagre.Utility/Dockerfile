@@ -1,4 +1,4 @@
-﻿﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
