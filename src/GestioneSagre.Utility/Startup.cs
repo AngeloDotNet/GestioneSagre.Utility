@@ -31,12 +31,7 @@ public class Startup
         services.AddDbContextUseSQLServer<UtilityDbContext>(connectionString, 3);
         services.AddDbContextGenericsMethods<UtilityDbContext>();
 
-        services
-            .AddTransient<IScontrinoPagatoService, ScontrinoPagatoService>()
-            .AddTransient<IScontrinoStatoService, ScontrinoStatoService>()
-            .AddTransient<ITipoClienteService, TipoClienteService>()
-            .AddTransient<ITipoPagamentoService, TipoPagamentoService>()
-            .AddTransient<ITipoScontrinoService, TipoScontrinoService>();
+        services.AddTransient<IUtilityService, UtilityService>();
     }
 
     public void Configure(WebApplication app)

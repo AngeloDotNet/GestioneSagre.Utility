@@ -3,22 +3,12 @@
 public class UtilityController : BaseController
 {
     private readonly ILogger<UtilityController> logger;
-    private readonly ITipoClienteService tipoClienteService;
-    private readonly ITipoPagamentoService tipoPagamentoService;
-    private readonly ITipoScontrinoService tipoScontrinoService;
-    private readonly IScontrinoPagatoService scontrinoPagatoService;
-    private readonly IScontrinoStatoService scontrinoStatoService;
+    private readonly IUtilityService utilityService;
 
-    public UtilityController(ILogger<UtilityController> logger, ITipoClienteService tipoClienteService,
-        ITipoPagamentoService tipoPagamentoService, ITipoScontrinoService tipoScontrinoService,
-        IScontrinoPagatoService scontrinoPagatoService, IScontrinoStatoService scontrinoStatoService)
+    public UtilityController(ILogger<UtilityController> logger, IUtilityService utilityService)
     {
         this.logger = logger;
-        this.tipoClienteService = tipoClienteService;
-        this.tipoPagamentoService = tipoPagamentoService;
-        this.tipoScontrinoService = tipoScontrinoService;
-        this.scontrinoPagatoService = scontrinoPagatoService;
-        this.scontrinoStatoService = scontrinoStatoService;
+        this.utilityService = utilityService;
     }
 
     [HttpGet("TipoCliente")]
@@ -26,7 +16,7 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetTipoCliente");
 
-        var result = await tipoClienteService.GetListTipoClienteAsync();
+        var result = await utilityService.GetListTipoClienteAsync();
         return result;
     }
 
@@ -35,7 +25,7 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetTipoPagamento");
 
-        var result = await tipoPagamentoService.GetListTipoPagamentoAsync();
+        var result = await utilityService.GetListTipoPagamentoAsync();
         return result;
     }
 
@@ -44,7 +34,7 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetTipoScontrino");
 
-        var result = await tipoScontrinoService.GetListTipoScontrinoAsync();
+        var result = await utilityService.GetListTipoScontrinoAsync();
         return result;
     }
 
@@ -53,7 +43,7 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetScontrinoPagato");
 
-        var result = await scontrinoPagatoService.GetListScontrinoPagatoAsync();
+        var result = await utilityService.GetListScontrinoPagatoAsync();
         return result;
     }
 
@@ -62,7 +52,7 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetScontrinoStato");
 
-        var result = await scontrinoStatoService.GetListScontrinoStatoAsync();
+        var result = await utilityService.GetListScontrinoStatoAsync();
         return result;
     }
 }
