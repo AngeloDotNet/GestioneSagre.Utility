@@ -23,6 +23,7 @@ public class Startup
         });
 
         var connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
+        var connStringRedis = Configuration.GetSection("ConnectionStrings").GetValue<string>("Redis");
 
         services.AddSwaggerGenConfig("Gestione Sagre Utility", "v1", string.Empty);
 
@@ -31,7 +32,15 @@ public class Startup
         services.AddDbContextUseSQLServer<UtilityDbContext>(connectionString, 3);
         services.AddDbContextGenericsMethods<UtilityDbContext>();
 
-        services.AddTransient<IUtilityService, UtilityService>();
+        services
+            .AddTransient<IUtilityService, UtilityService>()
+            .AddTransient<ICacheService, CacheService>();
+
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = connStringRedis;
+            options.InstanceName = "redisUtility_";
+        });
     }
 
     public void Configure(WebApplication app)
