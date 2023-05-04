@@ -4,11 +4,16 @@ public class UtilityController : BaseController
 {
     private readonly ILogger<UtilityController> logger;
     private readonly IUtilityService utilityService;
+    private readonly ICacheService cacheService;
 
-    public UtilityController(ILogger<UtilityController> logger, IUtilityService utilityService)
+    private readonly TimeSpan absoluteExpireTime = TimeSpan.FromHours(1);
+    private readonly TimeSpan slidingExpireTime = TimeSpan.FromMinutes(10);
+
+    public UtilityController(ILogger<UtilityController> logger, IUtilityService utilityService, ICacheService cacheService)
     {
         this.logger = logger;
         this.utilityService = utilityService;
+        this.cacheService = cacheService;
     }
 
     [HttpGet("TipoCliente")]
@@ -16,8 +21,17 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetTipoCliente");
 
-        var result = await utilityService.GetListTipoClienteAsync();
-        return result;
+        var cache = cacheService.Get<List<TipoCliente>>("TipoCliente");
+
+        if (cache != null)
+        {
+            return cache;
+        }
+        else
+        {
+            var result = await utilityService.GetListTipoClienteAsync();
+            return cacheService.Set("TipoCliente", result, absoluteExpireTime, slidingExpireTime);
+        }
     }
 
     [HttpGet("TipoPagamento")]
@@ -25,8 +39,17 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetTipoPagamento");
 
-        var result = await utilityService.GetListTipoPagamentoAsync();
-        return result;
+        var cache = cacheService.Get<List<TipoPagamento>>("TipoPagamento");
+
+        if (cache != null)
+        {
+            return cache;
+        }
+        else
+        {
+            var result = await utilityService.GetListTipoPagamentoAsync();
+            return cacheService.Set("TipoPagamento", result, absoluteExpireTime, slidingExpireTime);
+        }
     }
 
     [HttpGet("TipoScontrino")]
@@ -34,8 +57,17 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetTipoScontrino");
 
-        var result = await utilityService.GetListTipoScontrinoAsync();
-        return result;
+        var cache = cacheService.Get<List<TipoScontrino>>("TipoScontrino");
+
+        if (cache != null)
+        {
+            return cache;
+        }
+        else
+        {
+            var result = await utilityService.GetListTipoScontrinoAsync();
+            return cacheService.Set("TipoScontrino", result, absoluteExpireTime, slidingExpireTime);
+        }
     }
 
     [HttpGet("ScontrinoPagato")]
@@ -43,8 +75,17 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetScontrinoPagato");
 
-        var result = await utilityService.GetListScontrinoPagatoAsync();
-        return result;
+        var cache = cacheService.Get<List<ScontrinoPagato>>("ScontrinoPagato");
+
+        if (cache != null)
+        {
+            return cache;
+        }
+        else
+        {
+            var result = await utilityService.GetListScontrinoPagatoAsync();
+            return cacheService.Set("ScontrinoPagato", result, absoluteExpireTime, slidingExpireTime);
+        }
     }
 
     [HttpGet("ScontrinoStato")]
@@ -52,7 +93,16 @@ public class UtilityController : BaseController
     {
         logger.LogInformation("GetScontrinoStato");
 
-        var result = await utilityService.GetListScontrinoStatoAsync();
-        return result;
+        var cache = cacheService.Get<List<ScontrinoStato>>("ScontrinoStato");
+
+        if (cache != null)
+        {
+            return cache;
+        }
+        else
+        {
+            var result = await utilityService.GetListScontrinoStatoAsync();
+            return cacheService.Set("ScontrinoStato", result, absoluteExpireTime, slidingExpireTime);
+        }
     }
 }
