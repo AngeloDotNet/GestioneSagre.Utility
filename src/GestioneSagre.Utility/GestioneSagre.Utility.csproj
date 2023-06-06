@@ -8,11 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="GestioneSagre.Shared" Version="1.0.7" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GestioneSagre.Utility.BusinessLayer\GestioneSagre.Utility.BusinessLayer.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Logs\" />
     </ItemGroup>
 
 </Project>

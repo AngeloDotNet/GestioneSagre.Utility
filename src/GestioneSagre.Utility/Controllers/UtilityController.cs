@@ -2,12 +2,10 @@
 
 public class UtilityController : BaseController
 {
-    private readonly ILogger<UtilityController> logger;
     private readonly IMediator mediator;
 
-    public UtilityController(ILogger<UtilityController> logger, IMediator mediator)
+    public UtilityController(IMediator mediator)
     {
-        this.logger = logger;
         this.mediator = mediator;
     }
 
