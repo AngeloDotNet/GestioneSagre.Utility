@@ -28,4 +28,10 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Test
+      env:
+        hostname: ${{ secrets.HOSTNAME }}
+        port: ${{ secrets.PORT }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
       run: dotnet test --no-build --verbosity normal
+      working-directory: ./src/GestioneSagre.Utility.IntegrationTest
