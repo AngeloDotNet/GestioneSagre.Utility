@@ -10,6 +10,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementi di soluzione", "El
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.Shared", "src\GestioneSagre.Utility.Shared\GestioneSagre.Utility.Shared.csproj", "{9EF9A5B0-81DA-46CA-AB89-B604B1B0291F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.DataAccessLayer", "src\GestioneSagre.Utility.DataAccessLayer\GestioneSagre.Utility.DataAccessLayer.csproj", "{DFA9400E-5AAD-42C0-9D6D-E3B2DCCDA06E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.BusinessLayer", "src\GestioneSagre.Utility.BusinessLayer\GestioneSagre.Utility.BusinessLayer.csproj", "{39890EE1-43FD-48F0-8C58-A5C2E021953C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.UnitTest", "src\GestioneSagre.Utility.UnitTest\GestioneSagre.Utility.UnitTest.csproj", "{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.IntegrationTest", "src\GestioneSagre.Utility.IntegrationTest\GestioneSagre.Utility.IntegrationTest.csproj", "{19D1BE98-A3A5-4CE5-8459-969BB691B301}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +30,26 @@ Global
 		{326C255C-6159-46D6-BBEF-39AD1E581F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326C255C-6159-46D6-BBEF-39AD1E581F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{326C255C-6159-46D6-BBEF-39AD1E581F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EF9A5B0-81DA-46CA-AB89-B604B1B0291F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EF9A5B0-81DA-46CA-AB89-B604B1B0291F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EF9A5B0-81DA-46CA-AB89-B604B1B0291F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EF9A5B0-81DA-46CA-AB89-B604B1B0291F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA9400E-5AAD-42C0-9D6D-E3B2DCCDA06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA9400E-5AAD-42C0-9D6D-E3B2DCCDA06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA9400E-5AAD-42C0-9D6D-E3B2DCCDA06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA9400E-5AAD-42C0-9D6D-E3B2DCCDA06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39890EE1-43FD-48F0-8C58-A5C2E021953C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39890EE1-43FD-48F0-8C58-A5C2E021953C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39890EE1-43FD-48F0-8C58-A5C2E021953C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39890EE1-43FD-48F0-8C58-A5C2E021953C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
