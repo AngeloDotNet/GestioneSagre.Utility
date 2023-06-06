@@ -29,9 +29,7 @@ jobs:
       
     - name: Test
       env:
-        hostname: ${{ secrets.HOSTNAME }}
-        port: ${{ secrets.PORT }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        database: ${{ secrets.CONN_SQLSERVER }}
+        rabbitServer: ${{ secrets.CONN_RABBITMQ }}
       run: dotnet test --no-build --verbosity normal
       working-directory: ./src/GestioneSagre.Utility.IntegrationTest

@@ -1,4 +1,7 @@
-﻿namespace GestioneSagre.Utility;
+﻿using NET6CustomLibrary.MailKit.Options;
+using NET6CustomLibrary.RedisCache.Services;
+
+namespace GestioneSagre.Utility;
 
 public class Startup
 {
@@ -53,11 +56,25 @@ public class Startup
         services.AddTransient<IUtilityService, UtilityService>();
         services.AddHealthChecksUISQLServer<UtilityDbContext>("SQL Server", connectionString);
 
-        services.AddRedisCacheService(Configuration);
+        //services.AddRedisCacheService(Configuration);
+        var redisConfig = Configuration.GetSection("Redis");
+        var redisHost = redisConfig["Hostname"];
+
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = redisHost;
+            options.InstanceName = redisConfig["InstanceName"];
+        });
+
+        services.AddTransient<ICacheService, CacheService>();
+        services.Configure<RedisOptions>(redisConfig);
+
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetScontrinoPagatoHandler).Assembly));
 
         var rabbitConfig = Configuration.GetSection("RabbitMQ");
-        services.AddMassTransitService(rabbitConfig);
+        var rabbitServer = $"{rabbitConfig["Username"]}:{rabbitConfig["Password"]}@{rabbitConfig["Hostname"]}";
+
+        services.AddMassTransitService(rabbitConfig, rabbitServer);
 
         services.Configure<KestrelServerOptions>(Configuration.GetSection("Kestrel"));
         services.Configure<RouteOptions>(options => options.LowercaseUrls = true);

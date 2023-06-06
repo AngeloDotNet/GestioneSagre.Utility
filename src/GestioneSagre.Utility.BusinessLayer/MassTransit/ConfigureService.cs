@@ -2,7 +2,7 @@
 
 public static class ConfigureService
 {
-    public static void AddMassTransitService(this IServiceCollection services, IConfigurationSection rabbitConfig)
+    public static void AddMassTransitService(this IServiceCollection services, IConfigurationSection rabbitConfig, string serverRabbit)
     {
         services.AddMassTransit(x =>
         {
@@ -12,12 +12,11 @@ public static class ConfigureService
             x.SetKebabCaseEndpointNameFormatter();
             x.UsingRabbitMq((context, cfg) =>
             {
-                cfg.Host(rabbitConfig["Hostname"], rabbitConfig["VirtualHost"], h =>
+                cfg.Host(serverRabbit.Split("@")[1], rabbitConfig["VirtualHost"], h =>
                 {
-                    h.Username(rabbitConfig["Username"]);
-                    h.Password(rabbitConfig["Password"]);
+                    h.Username(serverRabbit.Split(":")[0]);
+                    h.Password(serverRabbit.Split(":")[1]);
                 });
-
                 cfg.ReceiveEndpoint(rabbitConfig["NameResponse-1"], e =>
                 {
                     e.Durable = Convert.ToBoolean(rabbitConfig["Durable"]);

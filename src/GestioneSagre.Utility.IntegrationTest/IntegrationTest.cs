@@ -71,22 +71,14 @@ public class IntegrationTest
             .AddUserSecrets<Startup>()
             .Build();
 
-        var hostname = config["ConnectionStrings:Hostname"];
-        var port = config["ConnectionStrings:Port"];
-        var username = config["ConnectionStrings:Username"];
-        var password = config["ConnectionStrings:Password"];
-
-        var database = $"Data Source={hostname},{port};Initial Catalog=GestioneSagre-Utility-Test;";
-        var profile = $"User ID={username};Password={password};Encrypt=False";
-        var connectionString = string.Concat(database, profile);
-
+        var database = config["ConnectionStrings:Default"];
         var application = new WebApplicationFactory<Startup>()
             .WithWebHostBuilder(builder =>
             {
                 builder.ConfigureTestServices(services =>
                 {
                     var options = new DbContextOptionsBuilder<UtilityDbContext>()
-                    .UseSqlServer(connectionString)
+                    .UseSqlServer(database)
                     .Options;
 
                     services.AddSingleton(options);
