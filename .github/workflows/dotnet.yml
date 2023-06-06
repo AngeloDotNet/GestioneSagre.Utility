@@ -28,8 +28,5 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Test
-      env:
-        database: ${{ secrets.CONN_SQLSERVER }}
-        rabbitServer: ${{ secrets.CONN_RABBITMQ }}
       run: dotnet test --no-build --verbosity normal
-      working-directory: ./src/GestioneSagre.Utility.IntegrationTest
+      working-directory: ./src/GestioneSagre.Utility.UnitTest
