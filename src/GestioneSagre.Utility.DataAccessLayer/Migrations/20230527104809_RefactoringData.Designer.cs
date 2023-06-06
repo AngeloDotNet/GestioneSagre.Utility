@@ -4,6 +4,7 @@ using GestioneSagre.Utility.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestioneSagre.Utility.DataAccessLayer.Migrations
 {
     [DbContext(typeof(UtilityDbContext))]
-    partial class UtilityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230527104809_RefactoringData")]
+    partial class RefactoringData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
