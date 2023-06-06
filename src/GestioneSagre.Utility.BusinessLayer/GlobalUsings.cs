@@ -1,0 +1,15 @@
+﻿global using GestioneSagre.Utility.Business.MassTransit;
+global using GestioneSagre.Utility.BusinessLayer.Consumers;
+global using GestioneSagre.Utility.BusinessLayer.Interfaces;
+global using GestioneSagre.Utility.BusinessLayer.Query;
+global using GestioneSagre.Utility.Shared.Entities;
+global using GestioneSagre.Utility.Shared.Models.Request;
+global using GestioneSagre.Utility.Shared.Models.Response;
+global using MassTransit;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+//global using NET6CustomLibrary.EFCore.Infrastructure.Interfaces;
+global using NET6CustomLibrary.MediatR;
+global using NET6CustomLibrary.RedisCache.Services;
+global using NET6CustomLibrary.Serilog.Services;
+global using SequentialGuid;
