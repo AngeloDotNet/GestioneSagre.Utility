@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CustomLibrary.EFCore" Version="1.0.18" />
-        <PackageReference Include="NET6CustomLibrary" Version="1.0.177" />
+        <PackageReference Include="CustomLibrary.EFCore" Version="1.0.20" />
+        <PackageReference Include="NET6CustomLibrary" Version="1.0.180" />
     </ItemGroup>
 
 </Project>
