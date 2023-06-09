@@ -6,6 +6,7 @@ global using GestioneSagre.Utility.BusinessLayer.MassTransit;
 global using GestioneSagre.Utility.BusinessLayer.Query;
 global using GestioneSagre.Utility.Controllers.Common;
 global using GestioneSagre.Utility.DataAccessLayer;
+global using GestioneSagre.Utility.Extensions;
 global using GestioneSagre.Utility.Shared.Entities;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;

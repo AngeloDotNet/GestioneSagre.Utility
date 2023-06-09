@@ -1,7 +1,4 @@
-﻿using NET6CustomLibrary.MailKit.Options;
-using NET6CustomLibrary.RedisCache.Services;
-
-namespace GestioneSagre.Utility;
+﻿namespace GestioneSagre.Utility;
 
 public class Startup
 {
@@ -18,63 +15,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
-        services.AddCors(options =>
-        {
-            options.AddPolicy($"{serviceName}", policy =>
-            {
-                policy.AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-            });
-        });
-
-        var dbConfig = Configuration.GetSection("ConnectionStrings");
-        var startupConfig = dbConfig["TypeStartup"];
-        var connectionString = string.Empty;
-
-        if (startupConfig == "Default")
-        {
-            connectionString = dbConfig["Default"]
-                .Replace("NOME-SERVER\\NOME-ISTANZA", string.Join(",", dbConfig["Hostname"], dbConfig["Port"]))
-                .Replace("PASSWORD", dbConfig["Password"]);
-        }
-        else
-        {
-            connectionString = dbConfig["Docker"]
-                .Replace("NOME-DOCKER", dbConfig["DockerHost"])
-                .Replace("PASSWORD", dbConfig["Password"]);
-        }
-
-        services.AddSwaggerGenConfig($"{swaggerName}", "v1", string.Empty);
-        services.AddSerilogSeqServices();
-
-        //Creazione migration: Add-Migration InitialMigration -project GestioneSagre.Utility.DataAccessLayer
-        //Esecuzione migration: Update-Database
-        services.AddDbContextForSQLServer<UtilityDbContext>(connectionString, 3, string.Empty);
-        services.AddDbContextServicesGenerics<UtilityDbContext>();
-
-        services.AddTransient<IUtilityService, UtilityService>();
-        services.AddHealthChecksUISQLServer<UtilityDbContext>("SQL Server", connectionString);
-
-        //services.AddRedisCacheService(Configuration);
-        var redisConfig = Configuration.GetSection("Redis");
-        var redisHost = redisConfig["Hostname"];
-
-        services.AddStackExchangeRedisCache(options =>
-        {
-            options.Configuration = redisHost;
-            options.InstanceName = redisConfig["InstanceName"];
-        });
-
-        services.AddTransient<ICacheService, CacheService>();
-        services.Configure<RedisOptions>(redisConfig);
-
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetScontrinoPagatoHandler).Assembly));
-
-        var rabbitConfig = Configuration.GetSection("RabbitMQ");
-        var rabbitServer = $"{rabbitConfig["Username"]}:{rabbitConfig["Password"]}@{rabbitConfig["Hostname"]}";
-
-        services.AddMassTransitService(rabbitConfig, rabbitServer);
+        services.AddRegisterConfigureServices(Configuration, serviceName, swaggerName);
 
         services.Configure<KestrelServerOptions>(Configuration.GetSection("Kestrel"));
         services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
@@ -83,6 +24,7 @@ public class Startup
     public void Configure(WebApplication app)
     {
         IWebHostEnvironment env = app.Environment;
+        UpdateDatabase(app);
 
         app.UseCors($"{serviceName}");
         app.AddUseSwaggerUI($"{swaggerName} v1");
@@ -95,5 +37,13 @@ public class Startup
         {
             endpoints.MapControllers();
         });
+    }
+
+    private static void UpdateDatabase(IApplicationBuilder app)
+    {
+        using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+        using var context = serviceScope.ServiceProvider.GetRequiredService<UtilityDbContext>();
+
+        DBSeeder.Seed(context);
     }
 }

@@ -9,6 +9,9 @@ public class UtilityController : BaseController
         this.mediator = mediator;
     }
 
+    [HttpGet("CheckApi")]
+    public IActionResult HealthProbe() => Ok();
+
     [HttpGet("TipoCliente")]
     public async Task<List<TipoCliente>> GetTipoClienteAsync() => await mediator.Send(new GetTipoClienteQuery());
 
