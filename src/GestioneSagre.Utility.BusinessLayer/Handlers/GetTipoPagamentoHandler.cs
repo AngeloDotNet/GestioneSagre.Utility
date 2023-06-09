@@ -17,7 +17,7 @@ public class GetTipoPagamentoHandler : IQueryHandler<GetTipoPagamentoQuery, List
     {
         logger.SaveLogInformation("Esecuzione Handler: TipoPagamento");
 
-        var recordKey = $"TipoPagamento_{SequentialGuidGenerator.Instance.NewGuid()}";
+        var recordKey = $"TipoPagamento_{Guid.NewGuid()}";
         var lista = await cacheService.GetCacheAsync<List<TipoPagamento>>(recordKey);
 
         if (lista is null)

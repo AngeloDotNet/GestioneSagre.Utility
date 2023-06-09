@@ -17,7 +17,7 @@ public class GetTipoScontrinoHandler : IQueryHandler<GetTipoScontrinoQuery, List
     {
         logger.SaveLogInformation("Esecuzione Handler: TipoScontrino");
 
-        var recordKey = $"TipoScontrino_{SequentialGuidGenerator.Instance.NewGuid()}";
+        var recordKey = $"TipoScontrino_{Guid.NewGuid()}";
         var lista = await cacheService.GetCacheAsync<List<TipoScontrino>>(recordKey);
 
         if (lista is null)

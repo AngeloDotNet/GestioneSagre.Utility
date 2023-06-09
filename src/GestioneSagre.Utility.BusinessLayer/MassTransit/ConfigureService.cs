@@ -12,10 +12,10 @@ public static class ConfigureService
             x.SetKebabCaseEndpointNameFormatter();
             x.UsingRabbitMq((context, cfg) =>
             {
-                cfg.Host(serverRabbit.Split("@")[1], rabbitConfig["VirtualHost"], h =>
+                cfg.Host(rabbitConfig["Hostname"], rabbitConfig["VirtualHost"], h =>
                 {
-                    h.Username(serverRabbit.Split(":")[0]);
-                    h.Password(serverRabbit.Split(":")[1]);
+                    h.Username(rabbitConfig["Username"]);
+                    h.Password(rabbitConfig["Password"]);
                 });
                 cfg.ReceiveEndpoint(rabbitConfig["NameResponse-1"], e =>
                 {

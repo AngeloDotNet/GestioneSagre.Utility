@@ -17,7 +17,7 @@ public class GetScontrinoStatoHandler : IQueryHandler<GetScontrinoStatoQuery, Li
     {
         logger.SaveLogInformation("Esecuzione Handler: ScontrinoStato");
 
-        var recordKey = $"ScontrinoStato_{SequentialGuidGenerator.Instance.NewGuid()}";
+        var recordKey = $"ScontrinoStato_{Guid.NewGuid()}";
         var lista = await cacheService.GetCacheAsync<List<ScontrinoStato>>(recordKey);
 
         if (lista is null)

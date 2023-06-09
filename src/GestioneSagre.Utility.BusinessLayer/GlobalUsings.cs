@@ -8,8 +8,6 @@ global using GestioneSagre.Utility.Shared.Models.Response;
 global using MassTransit;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
-//global using NET6CustomLibrary.EFCore.Infrastructure.Interfaces;
 global using NET6CustomLibrary.MediatR;
 global using NET6CustomLibrary.RedisCache.Services;
 global using NET6CustomLibrary.Serilog.Services;
-global using SequentialGuid;

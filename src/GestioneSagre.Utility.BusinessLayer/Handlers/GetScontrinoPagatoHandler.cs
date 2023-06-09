@@ -17,7 +17,7 @@ public class GetScontrinoPagatoHandler : IQueryHandler<GetScontrinoPagatoQuery, 
     {
         logger.SaveLogInformation("Esecuzione Handler: ScontrinoPagato");
 
-        var recordKey = $"ScontrinoPagato_{SequentialGuidGenerator.Instance.NewGuid()}";
+        var recordKey = $"ScontrinoPagato_{Guid.NewGuid()}";
         var lista = await cacheService.GetCacheAsync<List<ScontrinoPagato>>(recordKey);
 
         if (lista is null)

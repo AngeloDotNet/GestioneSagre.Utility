@@ -17,7 +17,7 @@ public class GetTipoClienteHandler : IQueryHandler<GetTipoClienteQuery, List<Tip
     {
         logger.SaveLogInformation("Esecuzione Handler: TipoCliente");
 
-        var recordKey = $"TipoCliente_{SequentialGuidGenerator.Instance.NewGuid()}";
+        var recordKey = $"TipoCliente_{Guid.NewGuid()}";
         var lista = await cacheService.GetCacheAsync<List<TipoCliente>>(recordKey);
 
         if (lista is null)
