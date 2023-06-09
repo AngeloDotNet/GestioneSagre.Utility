@@ -6,5 +6,9 @@ public class ScontrinoStatoEntityTypeConfiguration : IEntityTypeConfiguration<Sc
     {
         builder.ToTable("ScontrinoStato");
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.Value)
+            .IsRequired()
+            .HasMaxLength(30);
     }
 }

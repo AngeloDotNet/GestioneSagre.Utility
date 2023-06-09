@@ -6,5 +6,9 @@ public class TipoClienteEntityTypeConfiguration : IEntityTypeConfiguration<TipoC
     {
         builder.ToTable("TipoCliente");
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.Value)
+            .IsRequired()
+            .HasMaxLength(30);
     }
 }

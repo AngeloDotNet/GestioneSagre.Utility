@@ -6,5 +6,9 @@ public class TipoPagamentoEntityTypeConfiguration : IEntityTypeConfiguration<Tip
     {
         builder.ToTable("TipoPagamento");
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.Value)
+            .IsRequired()
+            .HasMaxLength(30);
     }
 }

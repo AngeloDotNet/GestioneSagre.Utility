@@ -6,5 +6,9 @@ public class TipoScontrinoEntityTypeConfiguration : IEntityTypeConfiguration<Tip
     {
         builder.ToTable("TipoScontrino");
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.Value)
+            .IsRequired()
+            .HasMaxLength(30);
     }
 }
