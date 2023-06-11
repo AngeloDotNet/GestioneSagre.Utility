@@ -1,5 +1,6 @@
 namespace GestioneSagre.Utility.UnitTest;
 
+[Author("Angelo")]
 public class UnitTest
 {
     private Mock<IUtilityService> mockUtilityService;
@@ -16,7 +17,7 @@ public class UnitTest
         mockUtilityService.VerifyAll();
     }
 
-    [Test]
+    [Test, Description("Get list scontrino pagato should response not empty (2 items)")]
     public async Task GetListScontrinoPagatoShouldResponseNotEmptyAsync()
     {
         var list = new List<ScontrinoPagato>()
@@ -33,7 +34,7 @@ public class UnitTest
         Assert.That(result.Count, Is.EqualTo(2));
     }
 
-    [Test]
+    [Test, Description("Get list scontrino stato should reponse not empty (5 items)")]
     public async Task GetListScontrinoStatoShouldResponseNotEmptyAsync()
     {
         var list = new List<ScontrinoStato>()
@@ -53,7 +54,7 @@ public class UnitTest
         Assert.That(result.Count, Is.EqualTo(5));
     }
 
-    [Test]
+    [Test, Description("Get list tipo cliente should reponse not empty (2 items)")]
     public async Task GetListTipoClienteShouldResponseNotEmptyAsync()
     {
         var list = new List<TipoCliente>()
@@ -70,7 +71,7 @@ public class UnitTest
         Assert.That(result.Count, Is.EqualTo(2));
     }
 
-    [Test]
+    [Test, Description("Get list tipo scontrino should reponse not empty (2 items)")]
     public async Task GetListTipoScontrinoShouldResponseNotEmptyAsync()
     {
         var list = new List<TipoScontrino>()
@@ -87,7 +88,7 @@ public class UnitTest
         Assert.That(result.Count, Is.EqualTo(2));
     }
 
-    [Test]
+    [Test, Description("Get list tipo pagamento should reponse not empty (3 items)")]
     public async Task GetListTipoPagamentoShouldResponseNotEmptyAsync()
     {
         var list = new List<TipoPagamento>()
