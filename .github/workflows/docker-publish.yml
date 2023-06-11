@@ -1,3 +1,5 @@
+name: Publish app to Docker Hub
+
 on:
   push:
     branches:
