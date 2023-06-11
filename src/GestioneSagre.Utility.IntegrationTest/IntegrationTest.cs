@@ -5,21 +5,7 @@ public class IntegrationTest
     [Fact]
     public async Task GetEndpointCheckApiShouldResponseStatusOKAsync()
     {
-        using var app = new WebApplicationFactory<Startup>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<UtilityDbContext>));
-
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-
-                    services.AddDbContext<UtilityDbContext>(options => options.UseInMemoryDatabase("Utility-InMemory-Test"));
-                });
-            });
+        using var app = new ApiWebApplicationFactory();
 
         var httpClient = app.CreateClient();
         var response = await httpClient.GetAsync("/api/utility/checkapi");
@@ -30,24 +16,9 @@ public class IntegrationTest
     [Fact]
     public async Task GetScontrinoPagatoShouldResponseListNotNullAsync()
     {
-        using var app = new WebApplicationFactory<Startup>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<UtilityDbContext>));
-
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-
-                    services.AddDbContext<UtilityDbContext>(options => options.UseInMemoryDatabase("Utility-InMemory-Test"));
-                });
-            });
+        using var app = new ApiWebApplicationFactory();
 
         var httpClient = app.CreateClient();
-
         var response = await httpClient.GetAsync("/api/utility/scontrinopagato");
         var items = await response.Content.ReadFromJsonAsync<List<ScontrinoPagato>>();
 
@@ -64,24 +35,9 @@ public class IntegrationTest
     [Fact]
     public async Task GetScontrinoStatoShouldResponseListNotNullAsync()
     {
-        using var app = new WebApplicationFactory<Startup>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<UtilityDbContext>));
-
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-
-                    services.AddDbContext<UtilityDbContext>(options => options.UseInMemoryDatabase("Utility-InMemory-Test"));
-                });
-            });
+        using var app = new ApiWebApplicationFactory();
 
         var httpClient = app.CreateClient();
-
         var response = await httpClient.GetAsync("/api/utility/scontrinostato");
         var items = await response.Content.ReadFromJsonAsync<List<ScontrinoStato>>();
 
@@ -98,24 +54,9 @@ public class IntegrationTest
     [Fact]
     public async Task GetTipoClienteShouldResponseListNotNullAsync()
     {
-        using var app = new WebApplicationFactory<Startup>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<UtilityDbContext>));
-
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-
-                    services.AddDbContext<UtilityDbContext>(options => options.UseInMemoryDatabase("Utility-InMemory-Test"));
-                });
-            });
+        using var app = new ApiWebApplicationFactory();
 
         var httpClient = app.CreateClient();
-
         var response = await httpClient.GetAsync("/api/utility/tipocliente");
         var items = await response.Content.ReadFromJsonAsync<List<TipoCliente>>();
 
@@ -132,24 +73,9 @@ public class IntegrationTest
     [Fact]
     public async Task GetTipoScontrinoShouldResponseListNotNullAsync()
     {
-        using var app = new WebApplicationFactory<Startup>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<UtilityDbContext>));
-
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-
-                    services.AddDbContext<UtilityDbContext>(options => options.UseInMemoryDatabase("Utility-InMemory-Test"));
-                });
-            });
+        using var app = new ApiWebApplicationFactory();
 
         var httpClient = app.CreateClient();
-
         var response = await httpClient.GetAsync("/api/utility/tiposcontrino");
         var items = await response.Content.ReadFromJsonAsync<List<TipoScontrino>>();
 
@@ -166,24 +92,9 @@ public class IntegrationTest
     [Fact]
     public async Task GetTipoPagamentoShouldResponseListNotNullAsync()
     {
-        using var app = new WebApplicationFactory<Startup>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureServices(services =>
-                {
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<UtilityDbContext>));
-
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-
-                    services.AddDbContext<UtilityDbContext>(options => options.UseInMemoryDatabase("Utility-InMemory-Test"));
-                });
-            });
+        using var app = new ApiWebApplicationFactory();
 
         var httpClient = app.CreateClient();
-
         var response = await httpClient.GetAsync("/api/utility/tipopagamento");
         var items = await response.Content.ReadFromJsonAsync<List<TipoPagamento>>();
 
