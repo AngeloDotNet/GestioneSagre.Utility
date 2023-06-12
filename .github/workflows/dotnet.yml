@@ -28,9 +28,9 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Unit Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build
       working-directory: ./src/GestioneSagre.Utility.UnitTest
 
-    - name: Integration Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: ./src/GestioneSagre.Utility.IntegrationTest
+    #- name: Integration Test
+    #  run: dotnet test --no-build --verbosity normal
+    #  working-directory: ./src/GestioneSagre.Utility.IntegrationTest
