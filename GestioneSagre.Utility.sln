@@ -18,8 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.Busin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.UnitTest", "src\GestioneSagre.Utility.UnitTest\GestioneSagre.Utility.UnitTest.csproj", "{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestioneSagre.Utility.IntegrationTest", "src\GestioneSagre.Utility.IntegrationTest\GestioneSagre.Utility.IntegrationTest.csproj", "{19D1BE98-A3A5-4CE5-8459-969BB691B301}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,10 +44,6 @@ Global
 		{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED458FF-B2D6-4A8C-9BFB-9EC1C8991BFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19D1BE98-A3A5-4CE5-8459-969BB691B301}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

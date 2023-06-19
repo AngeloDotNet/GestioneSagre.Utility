@@ -28,10 +28,6 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Test
-      env:
-        RABBITMQ-HOSTNAME: ${{ secrets.RABBITMQ_HOSTNAME }}
-        RABBITMQ-USERNAME: ${{ secrets.RABBITMQ_USERNAME }}
-        RABBITMQ-PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
       run: dotnet test --no-build
       working-directory: ./src/GestioneSagre.Utility.UnitTest
 
