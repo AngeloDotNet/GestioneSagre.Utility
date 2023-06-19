@@ -29,9 +29,9 @@ jobs:
       
     - name: Test
       env:
-        RabbitMQ:Hostname: ${{ secrets.HOSTNAME }}
-        RabbitMQ:Username: ${{ secrets.USERNAME }}
-        RabbitMQ:Password: ${{ secrets.PASSWORD }}
+        RABBITMQ-HOSTNAME: ${{ secrets.RABBITMQ_HOSTNAME }}
+        RABBITMQ-USERNAME: ${{ secrets.RABBITMQ_USERNAME }}
+        RABBITMQ-PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
       run: dotnet test --no-build
       working-directory: ./src/GestioneSagre.Utility.UnitTest
 
