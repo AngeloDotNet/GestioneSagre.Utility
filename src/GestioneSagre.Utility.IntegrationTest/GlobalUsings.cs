@@ -2,6 +2,7 @@ global using System.Net;
 global using System.Net.Http.Json;
 global using GestioneSagre.Utility.DataAccessLayer;
 global using GestioneSagre.Utility.Shared.Entities;
+global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Mvc.Testing;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
