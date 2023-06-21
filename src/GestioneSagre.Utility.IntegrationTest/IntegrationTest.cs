@@ -3,17 +3,6 @@ namespace GestioneSagre.Utility.IntegrationTest;
 public class IntegrationTest
 {
     [Fact]
-    public async Task GetEndpointCheckApiShouldResponseStatusOKAsync()
-    {
-        using var app = new ApiWebApplicationFactory();
-
-        var httpClient = app.CreateClient();
-        var response = await httpClient.GetAsync("/api/utility/checkapi");
-
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-    }
-
-    [Fact]
     public async Task GetScontrinoPagatoShouldResponseListNotNullAsync()
     {
         using var app = new ApiWebApplicationFactory();

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-
-namespace GestioneSagre.Utility.IntegrationTest;
+﻿namespace GestioneSagre.Utility.IntegrationTest;
 
 public class ApiWebApplicationFactory : WebApplicationFactory<Startup>
 {

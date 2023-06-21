@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GestioneSagre.Utility\GestioneSagre.Utility.csproj" />
+        <ProjectReference Include="..\GestioneSagre.Utility.Api.Internal\GestioneSagre.Utility.Api.Internal.csproj" />
     </ItemGroup>
 
 </Project>
