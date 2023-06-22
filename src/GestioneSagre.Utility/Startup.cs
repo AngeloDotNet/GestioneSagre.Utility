@@ -24,7 +24,6 @@ public class Startup
     public void Configure(WebApplication app)
     {
         IWebHostEnvironment env = app.Environment;
-        UpdateDatabase(app);
 
         app.UseCors($"{serviceName}");
         app.AddUseSwaggerUI($"{swaggerName} v1");
@@ -37,13 +36,5 @@ public class Startup
         {
             endpoints.MapControllers();
         });
-    }
-
-    private static void UpdateDatabase(IApplicationBuilder app)
-    {
-        using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
-        using var context = serviceScope.ServiceProvider.GetRequiredService<UtilityDbContext>();
-
-        DBSeeder.Seed(context);
     }
 }

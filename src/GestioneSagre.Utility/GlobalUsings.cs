@@ -1,12 +1,9 @@
 ﻿global using System.Net.Mime;
 global using CustomLibrary.EFCore.Extensions;
-global using GestioneSagre.Utility.BusinessLayer.Handlers;
-global using GestioneSagre.Utility.BusinessLayer.Interfaces;
-global using GestioneSagre.Utility.BusinessLayer.MassTransit;
+global using GestioneSagre.Utility.BusinessLayer.Extensions;
 global using GestioneSagre.Utility.BusinessLayer.Query;
 global using GestioneSagre.Utility.Controllers.Common;
 global using GestioneSagre.Utility.DataAccessLayer;
-global using GestioneSagre.Utility.Extensions;
 global using GestioneSagre.Utility.Shared.Entities;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
