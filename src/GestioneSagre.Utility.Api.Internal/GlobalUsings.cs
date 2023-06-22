@@ -1,0 +1,10 @@
+﻿global using System.Net.Mime;
+global using GestioneSagre.Utility.Api.Internal.Controllers.Common;
+global using GestioneSagre.Utility.BusinessLayer.Extensions;
+global using GestioneSagre.Utility.BusinessLayer.Interfaces;
+global using GestioneSagre.Utility.BusinessLayer.Query;
+global using GestioneSagre.Utility.Shared.Entities;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Server.Kestrel.Core;
+global using NET6CustomLibrary.Extensions;
+global using NET6CustomLibrary.Swagger;
