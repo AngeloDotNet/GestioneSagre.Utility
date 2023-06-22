@@ -26,7 +26,7 @@ public class Startup
         IWebHostEnvironment env = app.Environment;
 
         app.UseCors($"{serviceName}");
-        app.AddUseSwaggerUI($"{swaggerName} v1");
+        app.UseSwaggerUINoEmptyRoutePrefix($"{swaggerName} v1");
 
         app.UseRouting();
         app.AddSerilogConfigureServices();

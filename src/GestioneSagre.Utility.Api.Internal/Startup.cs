@@ -29,7 +29,7 @@ public class Startup
         UpdateDatabase(app);
 
         app.UseCors($"{serviceName}");
-        app.AddUseSwaggerUI($"{swaggerName} v1");
+        app.UseSwaggerUINoEmptyRoutePrefix($"{swaggerName} v1");
 
         app.UseRouting();
         app.AddSerilogConfigureServices();
