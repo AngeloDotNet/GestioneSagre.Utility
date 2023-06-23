@@ -1,5 +1,6 @@
 ﻿namespace GestioneSagre.Utility.DataAccessLayer;
 
+[ExcludeFromCodeCoverage]
 public class DBSeeder
 {
     public static void Seed(UtilityDbContext context)
