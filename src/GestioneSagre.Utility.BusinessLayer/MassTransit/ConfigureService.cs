@@ -1,5 +1,6 @@
 ﻿namespace GestioneSagre.Utility.BusinessLayer.MassTransit;
 
+[ExcludeFromCodeCoverage]
 public static class ConfigureService
 {
     public static void AddMassTransitService(this IServiceCollection services, IConfigurationSection rabbitConfig, string serverRabbit)

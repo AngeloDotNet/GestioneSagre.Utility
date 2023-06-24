@@ -1,4 +1,6 @@
-﻿global using CustomLibrary.EFCore.Extensions;
+﻿global using System.Diagnostics.CodeAnalysis;
+global using CustomLibrary.EFCore.EFCore.Infrastructure.Interfaces;
+global using CustomLibrary.EFCore.Extensions;
 global using GestioneSagre.Utility.Business.MassTransit;
 global using GestioneSagre.Utility.BusinessLayer.Consumers;
 global using GestioneSagre.Utility.BusinessLayer.Handlers;
