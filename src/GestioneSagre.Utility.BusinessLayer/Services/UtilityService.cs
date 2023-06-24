@@ -1,7 +1,6 @@
-﻿using CustomLibrary.EFCore.EFCore.Infrastructure.Interfaces;
+﻿namespace GestioneSagre.Utility.BusinessLayer.Interfaces;
 
-namespace GestioneSagre.Utility.BusinessLayer.Interfaces;
-
+[ExcludeFromCodeCoverage]
 public class UtilityService : IUtilityService
 {
     private readonly IUnitOfWork<ScontrinoPagato, Guid> uOWScontrinoPagato;
