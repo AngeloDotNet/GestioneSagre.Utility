@@ -1,5 +1,6 @@
 ﻿namespace GestioneSagre.Utility.BusinessLayer.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class RegisterServices
 {
     public static IServiceCollection AddRegisterConfigureServices(this IServiceCollection services,
@@ -47,7 +48,8 @@ public static class RegisterServices
 
         var dbConfig = configuration.GetSection("ConnectionStrings");
         var startupConfig = dbConfig["TypeStartup"];
-        var connectionString = string.Empty;
+
+        string connectionString;
 
         if (startupConfig == "Default")
         {
